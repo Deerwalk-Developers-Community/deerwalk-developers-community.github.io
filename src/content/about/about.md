@@ -7,10 +7,10 @@ This content will be displayed at the top of the index page.
 You can leave this empty if you don’t want to show any content.
 -->
 
-A static blog theme based on [Astro](https://astro.build), designed for clarity and focus.
+We are a passionate group of builders creating impactful open-source projects for Nepali youth.
 
-With a deliberately minimal design, this layout ensures your content takes center stage. It's built for flexibility, offering customization options that honor its clean and elegant aesthetic.
+We welcome collaboration with anyone who shares our vision of building great software. Our focus is on meaningful projects rather than social media presence.
 
-Effortlessly share your thoughts in _a calm & dustless space._
+Feel free to reach out to us at "_developers dot community@deerwalk dot edu dot np_"
 
-Check posts for details and view source on [GitHub](https://github.com/the3ash/astro-chiri).
+Our [Github](https://github.com/deerwalk-developers-community)
