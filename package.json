@@ -5,16 +5,16 @@
   "license": "MIT",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "pnpm exec tsx scripts/toggle-proxy.ts",
-    "build": "pnpm run prebuild && astro build",
+    "prebuild": "npx tsx scripts/toggle-proxy.ts",
+    "build": "npm run prebuild && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "new": "tsx scripts/new-post.ts",
-    "update-theme": "tsx scripts/update-theme.ts"
+    "new": "npx tsx scripts/new-post.ts",
+    "update-theme": "npx tsx scripts/update-theme.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.1",
