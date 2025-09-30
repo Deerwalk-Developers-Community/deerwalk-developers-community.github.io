@@ -15,15 +15,14 @@ import remarkTOC from './src/plugins/remark-toc.mjs'
 import { themeConfig } from './src/config'
 import { imageConfig } from './src/utils/image-config'
 import path from 'path'
-import node from '@astrojs/node'
 
 export default defineConfig({
   // adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
-  adapter: node({
-    mode: 'standalone'
-  }),
+  // adapter: node({
+  //   mode: 'standalone'
+  // }),
   site: themeConfig.site.website,
-  output: 'server',
+  output: 'static',
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',

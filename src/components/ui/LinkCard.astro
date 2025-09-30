@@ -4,67 +4,25 @@
   let linkCardsObserver: IntersectionObserver | null = null
   const metadataCache = new Map<string, LinkCardMetadata>()
 
-  // Fetch metadata from URL using our own proxy API with caching
-  async function fetchLinkMetadata(url: string): Promise<LinkCardMetadata | null> {
-    // Check cache first
-    if (metadataCache.has(url)) {
-      return metadataCache.get(url)!
-    }
-
+  // For static sites, we'll use basic URL info instead of fetching metadata
+  function getBasicUrlInfo(url: string) {
     try {
-      // Use our own proxy API
-      const proxyUrl = `/api/proxy?url=${encodeURIComponent(url)}`
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 3000) // 3 second timeout
+      const urlObj = new URL(url)
+      const domain = urlObj.hostname.replace('www.', '')
 
-      const response = await fetch(proxyUrl, {
-        signal: controller.signal
-      })
-
-      clearTimeout(timeoutId)
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch metadata')
+      return {
+        title: domain,
+        description: url,
+        image: '',
+        imageAlt: domain
       }
-
-      const html = await response.text()
-
-      // Parse HTML to extract metadata
-      const parser = new DOMParser()
-      const doc = parser.parseFromString(html, 'text/html')
-
-      const title =
-        doc.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
-        doc.querySelector('meta[name="twitter:title"]')?.getAttribute('content') ||
-        doc.querySelector('title')?.textContent ||
-        ''
-
-      const description =
-        doc.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
-        doc.querySelector('meta[name="twitter:description"]')?.getAttribute('content') ||
-        doc.querySelector('meta[name="description"]')?.getAttribute('content') ||
-        ''
-
-      const image =
-        doc.querySelector('meta[property="og:image"]')?.getAttribute('content') ||
-        doc.querySelector('meta[name="twitter:image"]')?.getAttribute('content') ||
-        ''
-
-      const imageAlt =
-        doc.querySelector('meta[property="og:image:alt"]')?.getAttribute('content') || title || ''
-
-      const metadata = {
-        title: title?.trim() || '',
-        description: description?.trim() || '',
-        image: image?.trim() || '',
-        imageAlt: imageAlt?.trim() || ''
-      }
-
-      // Cache the result
-      metadataCache.set(url, metadata)
-      return metadata
     } catch {
-      return null
+      return {
+        title: 'External Link',
+        description: url,
+        image: '',
+        imageAlt: 'External Link'
+      }
     }
   }
 
@@ -76,11 +34,8 @@
     }
 
     try {
-      // Fetch and update metadata
-      const metadata = await fetchLinkMetadata(url)
-      if (!metadata) {
-        return
-      }
+      // Get basic URL info for static sites
+      const metadata = getBasicUrlInfo(url)
 
       // Update title
       const titleElement = el.querySelector('.link-card-title') as HTMLElement
