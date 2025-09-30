@@ -4,7 +4,7 @@ export const themeConfig: ThemeConfig = {
   // SITE INFO ///////////////////////////////////////////////////////////////////////////////////////////
   site: {
     website: 'https://deerwalk-developers-community.github.io', // Site domain
-    title: 'Deerwalk Developers Community', // Site title
+    title: '', // Site title
     author: 'DDC', // Author name
     description: 'Bulding Open Source Projects for Nepal', // Site description
     language: 'en-US' // Default language

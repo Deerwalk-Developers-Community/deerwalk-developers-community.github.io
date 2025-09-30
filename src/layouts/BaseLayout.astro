@@ -24,8 +24,8 @@ const finalWidth = shouldUseCustomWidth ? `${widthValue}rem` : '25rem'
   </head>
   <body
     data-centered={themeConfig.general.centeredLayout}
+    class="w-full"
     style={`
-      max-width: ${finalWidth};
       ${shouldUseCustomWidth ? `--content-width: ${widthValue}rem;` : ''}
     `}
   >
@@ -50,12 +50,18 @@ const finalWidth = shouldUseCustomWidth ? `${widthValue}rem` : '25rem'
   .layout-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 7.5rem);
+    min-height: 100vh;
+    width: 100%;
   }
 
-  @media (max-width: 768px) {
-    .layout-wrapper {
-      min-height: calc(100vh - 5.5rem);
-    }
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    width: 100%;
+    overflow-x: hidden;
   }
 </style>

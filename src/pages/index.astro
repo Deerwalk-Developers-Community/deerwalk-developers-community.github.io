@@ -1,16 +1,194 @@
 ---
 import IndexLayout from '@/layouts/IndexLayout.astro'
-import About from '@/components/widgets/About.astro'
-import PostList from '@/components/widgets/PostList.astro'
-import { themeConfig } from '@/config'
-import { getSortedFilteredPosts } from '@/utils/draft'
-
-const posts = await getSortedFilteredPosts()
+import HeroSection from '@/components/sections/HeroSection.astro'
+import OpenSourceSection from '@/components/sections/OpenSourceSection.astro'
+import HourOfCodeSection from '@/components/sections/HourOfCodeSection.astro'
+import FellowshipSection from '@/components/sections/FellowshipSection.astro'
+import WorkshopsSection from '@/components/sections/WorkshopsSection.astro'
+import HackathonSection from '@/components/sections/HackathonSection.astro'
+import AnimationScript from '@/components/AnimationScript.astro'
 ---
 
-<IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
-  <About />
-  <main>
-    <PostList posts={posts} />
-  </main>
+<IndexLayout title="Deerwalk Developers Community" description="A thriving hub for students passionate about coding, collaboration, and creating a better future through technology">
+  <div class="w-full min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+    <HeroSection />
+    <OpenSourceSection />
+    <HourOfCodeSection />
+    <FellowshipSection />
+    <WorkshopsSection />
+    <HackathonSection />
+  </div>
+  <AnimationScript />
 </IndexLayout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    background: #0f172a;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #7c3aed, #0891b2);
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(139, 92, 246, 0.3);
+    color: white;
+  }
+
+  /* Glow effects */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+
+  /* Text glow */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  /* Gradient animations */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse glow */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+    }
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Background patterns */
+  .bg-pattern {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Loading animations */
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Custom button styles */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #7c3aed, #0891b2);
+    transition: left 0.3s ease;
+  }
+
+  .btn-primary:hover::before {
+    left: 0;
+  }
+
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+  }
+</style>

@@ -1,0 +1,296 @@
+---
+import { Image } from 'astro:assets'
+import GlitchText from '@/components/GlitchText.astro'
+---
+
+<section id="hero" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Animated Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-black">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),transparent_50%)] animate-pulse"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.15),transparent_50%)] animate-pulse delay-1000"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,198,255,0.15),transparent_50%)] animate-pulse delay-2000"></div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-purple-400 rounded-full animate-bounce opacity-60"></div>
+    <div class="absolute top-3/4 right-1/4 w-3 h-3 bg-blue-400 rounded-full animate-bounce delay-500 opacity-60"></div>
+    <div class="absolute top-1/2 left-3/4 w-1 h-1 bg-pink-400 rounded-full animate-bounce delay-1000 opacity-60"></div>
+    <div class="absolute bottom-1/4 left-1/2 w-2 h-2 bg-cyan-400 rounded-full animate-bounce delay-1500 opacity-60"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
+    <div class="mb-8">
+     <!-- Animated Title -->
+     <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+       <GlitchText
+         speed={1}
+         enableShadows={true}
+         enableOnHover={true}
+         className="hero-title-glitch"
+       >
+         <span class="block hero-title-line transform hover:scale-105 transition-transform duration-300">Deerwalk</span>
+         <span class="block hero-title-line transform hover:scale-105 transition-transform duration-300">Developers</span>
+         <span class="block hero-title-line transform hover:scale-105 transition-transform duration-300">Community</span>
+       </GlitchText>
+     </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+        A thriving hub for students passionate about
+        <span class="text-purple-400 font-semibold">coding</span>,
+        <span class="text-blue-400 font-semibold">collaboration</span>, and
+        <span class="text-pink-400 font-semibold">creating a better future</span>
+        through technology.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <button class="pulse-button group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-lg font-semibold overflow-hidden hover:scale-105 transition-all duration-300">
+          <span class="relative z-10">Join Our Community</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </button>
+
+        <button class="group relative px-8 py-4 border-2 border-purple-400 rounded-full text-lg font-semibold hover:bg-purple-400 hover:text-black transition-all duration-300 hover:scale-105">
+          <span>Explore Projects</span>
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div class="text-center group hover-card">
+          <div class="stat-number text-3xl md:text-4xl font-bold text-purple-400 mb-2">500+</div>
+          <div class="text-gray-400">Active Members</div>
+        </div>
+        <div class="text-center group hover-card">
+          <div class="stat-number text-3xl md:text-4xl font-bold text-blue-400 mb-2">50+</div>
+          <div class="text-gray-400">Open Source Projects</div>
+        </div>
+        <div class="text-center group hover-card">
+          <div class="stat-number text-3xl md:text-4xl font-bold text-pink-400 mb-2">15+</div>
+          <div class="text-gray-400">Workshops Monthly</div>
+        </div>
+        <div class="text-center group hover-card">
+          <div class="stat-number text-3xl md:text-4xl font-bold text-cyan-400 mb-2">$200k+</div>
+          <div class="text-gray-400">Hackathon Prizes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .delay-1500 {
+    animation-delay: 1.5s;
+  }
+
+  .delay-2000 {
+    animation-delay: 2s;
+  }
+
+  /* Glitch Text Effect */
+  .glitch-text {
+    color: #fff;
+    font-size: clamp(2rem, 10vw, 8rem);
+    white-space: nowrap;
+    font-weight: 900;
+    position: relative;
+    margin: 0 auto;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .glitch-text::after,
+  .glitch-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    color: #fff;
+    background-color: #060010;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+  }
+
+  .glitch-text::after {
+    left: 10px;
+    text-shadow: -5px 0 #ff073a;
+    animation: animate-glitch-after 3s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::before {
+    left: -10px;
+    text-shadow: 5px 0 #00ffff;
+    animation: animate-glitch-before 2s infinite linear alternate-reverse;
+  }
+
+  @keyframes animate-glitch-after {
+    0% {
+      clip-path: inset(20% 0 50% 0);
+    }
+    5% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    10% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    15% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    20% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    25% {
+      clip-path: inset(40% 0 20% 0);
+    }
+    30% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    35% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    40% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    45% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    50% {
+      clip-path: inset(20% 0 50% 0);
+    }
+    55% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    60% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    65% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    70% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    75% {
+      clip-path: inset(40% 0 20% 0);
+    }
+    80% {
+      clip-path: inset(20% 0 50% 0);
+    }
+    85% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    90% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    95% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    100% {
+      clip-path: inset(30% 0 40% 0);
+    }
+  }
+
+  @keyframes animate-glitch-before {
+    0% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    5% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    10% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    15% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    20% {
+      clip-path: inset(40% 0 20% 0);
+    }
+    25% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    30% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    35% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    40% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    45% {
+      clip-path: inset(40% 0 20% 0);
+    }
+    50% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    55% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    60% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    65% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    70% {
+      clip-path: inset(40% 0 20% 0);
+    }
+    75% {
+      clip-path: inset(30% 0 40% 0);
+    }
+    80% {
+      clip-path: inset(25% 0 35% 0);
+    }
+    85% {
+      clip-path: inset(15% 0 55% 0);
+    }
+    90% {
+      clip-path: inset(10% 0 60% 0);
+    }
+    95% {
+      clip-path: inset(40% 0 20% 0);
+    }
+    100% {
+      clip-path: inset(30% 0 40% 0);
+    }
+  }
+</style>

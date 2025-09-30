@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
+import tailwind from '@astrojs/tailwind'
 import playformInline from '@playform/inline'
 import remarkMath from 'remark-math'
 import remarkDirective from 'remark-directive'
@@ -14,7 +15,7 @@ import remarkTOC from './src/plugins/remark-toc.mjs'
 import { themeConfig } from './src/config'
 import { imageConfig } from './src/utils/image-config'
 import path from 'path'
-import node from "@astrojs/node";
+import node from '@astrojs/node'
 
 export default defineConfig({
   // adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
@@ -38,6 +39,7 @@ export default defineConfig({
     rehypePlugins: [rehypeKatex, rehypeCleanup, rehypeImageProcessor, rehypeCopyCode]
   },
   integrations: [
+    tailwind(),
     playformInline({
       Exclude: [(file) => file.toLowerCase().includes('katex')]
     }),
